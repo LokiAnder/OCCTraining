@@ -33,7 +33,9 @@ conda install -c conda-forge pythonocc-core=7.9.0
 ## 🚀 3. 下载并测试示例代码
 
 PythonOCC的示例代码仓库为:https://github.com/tpaviot/pythonocc-demos
+
 ![alt text](image-1.png)
+
 这里我们为了方便测试，这里我们先关注其中jupyter_notebooks文件夹内的示例。首先将其下载解压，并在其根目录下打开cmd，并启动conda对应的环境，并打开jupyter。
 
 ```bash
@@ -41,9 +43,12 @@ conda activate pyoccenv
 jupyter notebook
 ```
 然后找到helloworld.ipynb打开运行。
+
 ![alt text](image-2.png)
+
 > 这里会遇到ModuleNotFoundError: No module named 'jupyter_renderer'，因此需要安装jupyter_renderer
 最终helloworld.ipynb的运行结果如下：
+
 ![alt text](image-3.png)
 
 ---
@@ -55,8 +60,10 @@ jupyter notebook
 ### 📘 文档内容说明
 PythonOCC api文档地址：https://github.com/tpaviot/pythonocc-documentation
 这里是提供了构建好的html文档，这里我们可以先选择一个版本的文档然后打开OCC.html这个是其文档的首页
+
 ![alt text](image-4.png)
-PythonOCC 是对 OpenCASCADE C++ 内核的 Python 封装，模块数量庞大，如果是在实际使用的时候是按照需要的功能来查询对应的名词来寻找的，这里简单对其中比较常见功能-名词对应关系：
+
+PythonOCC 是对 OpenCASCADE C++ 内核的 Python 封装，模块数量庞大，如果是在实际使用的时候是按照需要的功能来查询对应的名词来寻找的，这里简单对其中比较常见功能-名词对应关系如下：
 
 #### ✅ 1. 基础几何与拓扑结构（几何建模核心）
 
@@ -129,7 +136,9 @@ PythonOCC 是对 OpenCASCADE C++ 内核的 Python 封装，模块数量庞大，
 1. 你想构建一个立方体，最先想到的搜索可能是：`box`，但是返回结果会太多。
 2. 这里参考功能和名称的对应关系，可以找到常用几何体生成器为:OCC.Core.BRepPrimAPI,所以可以先搜索BRepPrimAPI
 3. 文档中可以看到：
+
 ![alt text](image-5.png)
+
 ---
 
 
