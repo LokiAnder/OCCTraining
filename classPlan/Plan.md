@@ -32,3 +32,14 @@
 - BRep 层级结构：Vertex → Edge → Wire → Face → Solid
 
 ---
+### ✅ 第2讲：Python 建模实战
+- 布尔运算（并集、交集、差集）
+- 特征建模（拉伸、旋转、扫掠）
+
+---
+### ✅ 第3讲：undo/redo 机制
+- 理解 undo/redo 机制
+- 实现一个简单的 undo/redo 功能
+
+---
+
