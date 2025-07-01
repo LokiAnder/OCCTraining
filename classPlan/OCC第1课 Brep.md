@@ -277,11 +277,59 @@ get_shape_info(box)
 
 ## 📘 拓展阅读
 
-- **BRep 理论**：[OpenCASCADE BRep 格式说明](https://dev.opencascade.org/doc/overview/html/occt_brep_format.html)
-- **拓扑算法**：[Topology Algorithms in OCCT](https://dev.opencascade.org/doc/overview/html/occt_user_guides__boolean_operations.html)
-- **几何内核**：[Geometry Utilities](https://dev.opencascade.org/doc/refman/html/package_geom.html)
+- **BRep 理论**：[OpenCASCADE BRep 格式说明](https://dev.opencascade.org/doc/occt-6.7.0/overview/html/tutorial.html)
+- **拓扑算法**：[Topology Algorithms in OCCT](https://dev.opencascade.org/doc/occt-6.7.0/overview/html/occt_brep_format.html)
 
 ---
+
+
+## 🌳CSG 和 Brep
+###  什么是 CSG（Constructive Solid Geometry）
+
+**CSG（构造实体几何）** 是一种用“几何积木 + 运算”来构建模型的方法：
+
+- 使用简单的几何体（如立方体、球、圆柱等）作为基本构建单元；
+- 通过 **布尔运算**（并 ∪、交 ∩、差 −）将这些几何体组合起来；
+- 通常用一棵“构造树”来表示组合过程（节点是运算，叶子是几何体）；
+- 适合快速构造规则结构、程序化建模等。
+
+
+
+### CSG 与 B‑Rep（Boundary Representation）对比
+
+| 特性                  | CSG                                                | B‑Rep（边界表示）                                      |
+|-----------------------|-----------------------------------------------------|---------------------------------------------------------|
+| **建模方式**          | 几何体 + 布尔运算，构造树结构                     | 用面、边、顶点构建边界网壳结构                         |
+| **表达能力**          | 适合规则体组合，不擅长复杂曲面或特征              | 能表达任意复杂几何，支持倒角、圆角、壳体等             |
+| **数据结构**          | 简单，数据量小                                     | 结构复杂，需维护几何+拓扑信息                          |
+| **模型封闭性**        | 天然封闭，组合后一定是合法实体                    | 可能出现裂缝、重复边等问题，需要额外校验               |
+| **建模效率**          | 快速，逻辑清晰，适合程序生成                      | 较慢，需要精细建模与验证                               |
+| **点分类与渲染**      | 易于判断点是否在物体内部，适合光线追踪            | 渲染前需三角化，点分类依赖拓扑和射线分析               |
+| **适用场景**          | 游戏建模、布尔逻辑模型、快速原型等                | CAD 设计、制造建模、曲面建模、工程分析等               |
+
+
+
+### ✅ 使用场景
+
+- ✅ **使用 CSG**：
+  - 当你需要快速构建简单模型，或用程序自动生成几何体时；
+  - 当模型主要由规则形体组成，几何细节要求不高时；
+
+- ✅ **使用 B‑Rep**：
+  - 当你要表达复杂几何曲面、倒角、挖孔等精细结构时；
+  - 当模型将用于制造、CAD 分析、CAM 加工等工程应用时。
+
+- ✅ **混合使用**：
+  - 常见流程是：先用 CSG 快速建模，后转为 B‑Rep 进行细化、加工和导出。
+
+
+
+### 🧠 总结一句话
+
+> **CSG** 就像在搭积木，简单快速；  
+> **B‑Rep** 更像雕刻雕塑，细致精密。
+
+
 
 ## 🧪 课后作业
 
@@ -313,7 +361,7 @@ get_shape_info(box)
 
 6. **🤔 概念思考**
    - 为什么 OpenCASCADE 要将几何和拓扑分离？这样设计有什么好处？
-   - 在实际的 CAD 软件中，BRep 结构如何支持"倒角"、"圆角"等操作？
+   - 在实际的 CAD 软件中，BRep 结构如何支持"倒角"、"圆角"等操作？如果是你俩的话会如何实现这些功能？
 
 ---
 
