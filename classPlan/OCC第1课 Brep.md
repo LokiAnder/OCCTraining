@@ -188,6 +188,9 @@ renderer.DisplayShape(box, render_edges=True)
 renderer.Display()
 ```
 
+
+> ❓为什么有48个顶点：
+> 圆面为什么有两个边
 ---
 
 ## 🎨 5. 拓扑与几何的关系实例
