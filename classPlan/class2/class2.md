@@ -63,7 +63,7 @@ renderer.Display()
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeCylinder
 from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Cut
 from OCC.Core.gp import gp_Pnt, gp_Ax2, gp_Dir
-
+from OCC.Display.WebGl.jupyter_renderer import JupyterRenderer
 def create_box_with_hole():
     """创建带孔的立方体"""
     
@@ -198,7 +198,10 @@ if L_shape:
 ```python
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeRevol
 from OCC.Core.gp import gp_Pnt, gp_Ax1, gp_Dir
+from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge,BRepBuilderAPI_MakeWire
+from OCC.Display.WebGl.jupyter_renderer import JupyterRenderer
 import math
+
 
 def create_vase_by_revolution():
     """通过旋转创建花瓶形状"""
@@ -252,7 +255,7 @@ vase_shape = create_vase_by_revolution()
 if vase_shape:
     # 可视化
     renderer = JupyterRenderer()
-    renderer.DisplayShape(vase_shape, shape_color="#E74C3C", transparency=0.3)
+    renderer.DisplayShape(vase_shape, shape_color="#E74C3C", transparency=True,opacity = 0.3)
     renderer.Display()
 ```
 
@@ -263,6 +266,13 @@ if vase_shape:
 ### 🎯 综合案例：创建带把手的杯子
 
 ```python
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeRevol,BRepPrimAPI_MakeCylinder
+from OCC.Core.gp import gp_Pnt, gp_Ax1, gp_Dir,gp_Trsf,gp_Vec,gp_Ax2
+from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge,BRepBuilderAPI_MakeWire,BRepBuilderAPI_Transform
+from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Cut,BRepAlgoAPI_Fuse
+from OCC.Display.WebGl.jupyter_renderer import JupyterRenderer
+import math
+
 def create_coffee_mug():
     """创建一个带把手的咖啡杯"""
     
@@ -290,7 +300,7 @@ def create_coffee_mug():
     # 4. 创建把手（环形拉伸）
     # 创建把手的截面轮廓（圆形）
     handle_center = gp_Pnt(35, 0, 20)  # 把手中心位置
-    handle_profile = BRepPrimAPI_MakeCylinder(3, 1).Shape()  # 截面圆
+    handle_profile = BRepPrimAPI_MakeCylinder(3, 5).Shape()  # 截面圆
     
     # 把手路径（半圆弧）
     import math
@@ -318,12 +328,12 @@ def create_coffee_mug():
     # 5. 创建把手（圆形截面沿路径扫掠）
     # 简化版：使用环形近似把手
     handle_torus = BRepPrimAPI_MakeCylinder(
-        gp_Ax2(gp_Pnt(30, 0, 20), gp_Dir(0, 1, 0)), 3, 15
+        gp_Ax2(gp_Pnt(30, 0, 20), gp_Dir(0, 1, 0)), 10, 5
     ).Shape()
     
     # 创建把手孔
     handle_hole = BRepPrimAPI_MakeCylinder(
-        gp_Ax2(gp_Pnt(30, -1, 20), gp_Dir(0, 1, 0)), 1.5, 17
+        gp_Ax2(gp_Pnt(30, -1, 20), gp_Dir(0, 1, 0)), 8, 17
     ).Shape()
     
     handle_solid = BRepAlgoAPI_Cut(handle_torus, handle_hole).Shape()
@@ -559,8 +569,7 @@ renderer.Display()
 
 ## 📘 拓展阅读
 
-- **布尔运算理论**：[OpenCASCADE Boolean Operations](https://dev.opencascade.org/doc/overview/html/occt_user_guides__boolean_operations.html)
-- **特征建模**：[Primitive API Documentation](https://dev.opencascade.org/doc/refman/html/package_breprimapi.html)
+- **布尔运算理论**：[OpenCASCADE Boolean Operations](https://dev.opencascade.org/doc/occt-7.4.0/overview/html/occt_user_guides__boolean_operations.html#:~:text=The%20Boolean%20operator%20provides%20the%20operations%20%28Common%2C%20Fuse%2C,%7BS11%2C%20S12%20...%20S1n1%7D%20group%20of%20arguments%20%28Objects%29%3B)
 - **几何属性**：[Global Properties](https://dev.opencascade.org/doc/refman/html/package_gprop.html)
 
 ---
