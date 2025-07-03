@@ -56,6 +56,8 @@ renderer.Display()
 
 ## 🏗️ 2. 实际建模案例：创建带孔立方体
 
+![alt text](image-2.png)
+
 ### 🎯 案例目标
 创建一个立方体，然后在其中心打一个圆柱形的孔。
 
@@ -117,6 +119,8 @@ if box_with_hole:
 ### 📖 什么是拉伸？
 
 **拉伸（Extrusion）** 是将二维轮廓沿指定方向拉伸形成三维实体的操作。
+
+![alt text](image-1.png)
 
 ### 🎯 案例：从草图到实体
 
@@ -195,6 +199,8 @@ if L_shape:
 
 ### 🎯 案例：创建花瓶形状
 
+![alt text](image.png)
+
 ```python
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeRevol
 from OCC.Core.gp import gp_Pnt, gp_Ax1, gp_Dir
@@ -262,6 +268,8 @@ if vase_shape:
 ---
 
 ## 🔗 5. 复合建模：组合多种特征
+
+![alt text](image-3.png)
 
 ### 🎯 综合案例：创建带把手的杯子
 
