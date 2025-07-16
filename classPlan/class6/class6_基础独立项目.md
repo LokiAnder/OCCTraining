@@ -14,7 +14,7 @@ SimpleCAD/
 ├── main.cpp                    # 程序的入口，就像大门
 ├── MainWindow.h/cpp            # 主窗口，管理整个界面
 ├── OccWidget.h/cpp             # 专门负责3D显示的组件
-└── build/                      # 编译后的文件放这里
+└── out/                        # 编译后的文件放这里，你要是cmake-gui来配置的话可能是build
 ```
 
 ### 🏗️ 三个核心角色分工
@@ -39,8 +39,10 @@ find_package(Qt5 REQUIRED COMPONENTS Core Widgets OpenGL)      # 找Qt库
 find_package(OpenCASCADE REQUIRED)                             # 找OCCT库
 target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Widgets)  # 链接库
 ```
-
-就像做菜前先准备食材一样，CMake 帮我们准备好所有需要的"编程食材"。
+就像做菜前先准备食材一样，CMake 帮我们准备好所有需要的"编程食材"。然后有时候可能自动找不到石材的位置，这里可以直接给出位置的地址
+```cmake
+set(OpenCASCADE_DIR "C:/Program Files/OCCT/cmake")
+```
 
 ---
 
@@ -532,15 +534,20 @@ void OccWidget::mouseMoveEvent(QMouseEvent* event)
 
 ---
 
-## 🔨 4. 编译和测试（简化版）
+## 🔨 4. 编译和测试（vs版）
 
 ### 📋 编译步骤
+这里右键CMakeLists.txt 选择使用CMake调试器配置
 
-```bash
-mkdir build && cd build
-cmake ..
-cmake --build . --config Release
-```
+![alt text](image.png)
+
+然后vs的顶部会提示IntelliSense信息过时，这里点击生成
+
+![alt text](image-1.png)
+
+然后项目就配置好了，接下来选择main.cpp作为启动项就可以进行调试运行了。
+
+![alt text](image-2.png)
 
 ### 🧪 测试清单
 
