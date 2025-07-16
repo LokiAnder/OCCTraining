@@ -27,6 +27,7 @@ def on_key_press():
         e2 = BRepBuilderAPI_MakeEdge(p2, p3).Edge()
         e3 = BRepBuilderAPI_MakeEdge(p3, p4).Edge()
         e4 = BRepBuilderAPI_MakeEdge(p4, p1).Edge()
+        aaaa = 123
         wire = BRepBuilderAPI_MakeWire(e1, e2, e3, e4).Wire()
         return BRepBuilderAPI_MakeFace(wire).Face()
     
