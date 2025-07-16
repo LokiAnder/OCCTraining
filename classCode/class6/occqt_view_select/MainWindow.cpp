@@ -61,7 +61,7 @@ void MainWindow::SetupUI()
     connect(myOccWidget, &OccWidget::ShapeSelected, this, &MainWindow::OnShapeSelected);
 
     // 设置窗口属性
-    setWindowTitle("简单的OCCT查看器");
+    setWindowTitle("简单的occ查看器");
     resize(1000, 800);
 
     // 初始化OCC
