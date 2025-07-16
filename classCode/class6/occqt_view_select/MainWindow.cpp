@@ -60,6 +60,7 @@ void MainWindow::SetupUI()
     connect(myClearButton, &QPushButton::clicked, this, &MainWindow::OnClearAll);
     connect(myOccWidget, &OccWidget::ShapeSelected, this, &MainWindow::OnShapeSelected);
 
+
     // 设置窗口属性
     setWindowTitle("简单的occ查看器");
     resize(1000, 800);

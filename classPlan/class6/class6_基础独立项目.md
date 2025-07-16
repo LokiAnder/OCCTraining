@@ -561,3 +561,5 @@ void OccWidget::mouseMoveEvent(QMouseEvent* event)
 
 ### 🚀 进阶练习
 4. **多选功能**：实现Ctrl+点击的多选功能
+### ‼️ 最终任务
+5. ** 布尔操作**：实现布尔操作按钮，当Ctrl+点击两个实体然后点击按钮，进行布尔操作，然后显示出来。
