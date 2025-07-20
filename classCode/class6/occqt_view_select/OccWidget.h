@@ -11,6 +11,7 @@
 #include <Aspect_Handle.hxx>
 #include <Aspect_DisplayConnection.hxx>
 #include <OpenGl_GraphicDriver.hxx>
+#include <AIS_ViewController.hxx>
 
 #ifdef _WIN32
 #include <WNT_Window.hxx>
@@ -21,7 +22,7 @@
 #include <TopoDS_Shape.hxx>
 #include <map>
 
-class OccWidget : public QWidget
+class OccWidget : public QWidget,protected AIS_ViewController
 {
     Q_OBJECT
 
@@ -37,6 +38,7 @@ public:
 
     // 清除所有对象
     void ClearAll();
+    virtual QPaintEngine* paintEngine() const;
 
 protected:
     // Qt事件处理

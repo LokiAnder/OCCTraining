@@ -27,11 +27,24 @@ OccWidget::OccWidget(QWidget* parent)
     , myViewInitialized(false)
 {
     // 设置Qt widget属性
-    setBackgroundRole(QPalette::NoRole);
+    setAttribute(Qt::WA_PaintOnScreen);
+    setAttribute(Qt::WA_NoSystemBackground);
     setFocusPolicy(Qt::StrongFocus);
     setAttribute(Qt::WA_PaintOnScreen);
     setAttribute(Qt::WA_NoSystemBackground);
 }
+QPaintEngine* OccWidget::paintEngine() const
+{
+    return nullptr;
+}
+
+void OccWidget::paintEvent(QPaintEvent* event)
+{
+    if (!myView.IsNull()) {
+        myView->Redraw();  // 或 myView->RedrawImmediate();
+    }
+}
+
 
 OccWidget::~OccWidget()
 {
@@ -51,6 +64,7 @@ void OccWidget::InitializeOcc()
 
         myViewInitialized = true;
         std::cout << "OccWidget initialized successfully" << std::endl;
+        myViewer->Redraw();
 
     }
     catch (const Standard_Failure& e) {
@@ -166,12 +180,12 @@ void OccWidget::ClearAll()
     }
 }
 
-void OccWidget::paintEvent(QPaintEvent* /*event*/)
-{
-    if (!myView.IsNull()) {
-        myView->Redraw();
-    }
-}
+//void OccWidget::paintEvent(QPaintEvent* /*event*/)
+//{
+//    if (!myView.IsNull()) {
+//        myView->Redraw();
+//    }
+//}
 
 void OccWidget::resizeEvent(QResizeEvent* /*event*/)
 {
