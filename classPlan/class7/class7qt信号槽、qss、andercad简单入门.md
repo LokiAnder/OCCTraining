@@ -253,6 +253,9 @@ QPushButton:pressed {
 
 ---
 
+## 🐤 AnderCAD
+详情请见：https://github.com/LokiAnder/AnderCAD
+
 ## 🧪 课后作业
 
 ### ✅ 基础练习
@@ -266,3 +269,6 @@ QPushButton:pressed {
 1. 编写一个 `.qss` 文件并加载应用
 2. 实现“Fusion360 风格”界面主题：蓝灰配色，扁平化设计
 3. 使用 `QPushButton` 和 `QLabel` 搭配构建一个美观的工具栏
+
+### 🎇 下节课-最终章
+1. 答疑解惑
